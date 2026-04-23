@@ -109,6 +109,10 @@ jobs:
           cache: "npm"
           cache-dependency-path: "${{ matrix.service }}/package-lock.json"
 
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ${{ matrix.service }}
+
       - name: Run tests
         run: npm test -- --passWithNoTests --coverage
         working-directory: ${{ matrix.service }}
